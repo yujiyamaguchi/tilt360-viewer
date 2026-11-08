@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- 外部と通信しない: 読み込めるのはこのサイト自身のファイルと、端末内で作った blob: だけ -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; media-src blob:; connect-src 'self'; worker-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Tilt 360 Viewer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage"><canvas id="cv"></canvas></div>
+<button id="hide" class="sub">UI</button>
+<div id="ui">
+  <div id="warn"></div>
+  <div id="msg">360°回転する動画を選んでください。動画はこの端末の中だけで処理し、どこにも送信しません。</div>
+  <div class="row">
+    <label class="btn">動画を選ぶ<input id="file" type="file" accept="video/*"></label>
+    <button id="cancel" class="sub off">キャンセル</button>
+    <button id="calib" class="sub">今の傾きを正面に</button>
+    <button id="dir" class="sub">回転方向: 通常</button>
+  </div>
+  <div class="row">感度 <input id="sens" type="range" min="0.2" max="4" step="0.1" value="1"><span id="sensv">1.0</span></div>
+  <div id="note">AI 生成動画（MiniMax H3 など）用のビューアです。</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
